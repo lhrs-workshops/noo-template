@@ -76,3 +76,26 @@ git push
 ```
 7. Po potisku bo GitHub avtomatsko preveril rešitev in ustvaril rezultate.
 
+## Kako pregledovalec vidi rezultate
+Rezultati testiranja za vsakega študenta se nahajajo pod Actions > [ime potiska] > Artifacts > grade-summary
+
+Vsebina grade_summary.json:
+```
+{
+  "square": true,
+  "is_even": true,
+  "q1": true,
+  "q2": false,
+  "total_score": 3,
+  "max_score": 4
+}
+```
+
+## Razširjanje naloge
+Če želiš dodati nove naloge:
+ - Zamenjaj notebook.ipynb z novo nalogo
+ - Pripravi nove teste v zunanjem testnem repozitoriju
+ - Posodobi URL v classroom.yml, če se testna datoteka spremeni (npr. test_funkcije.py)
+ -❗ Pomembno odgovori.json mora biti ustvarjen v Jupyter zvezku pred oddajo
+ - Če pytest ne najde datoteke, bo test padel
+ - Če študent spremeni imena funkcij, bodo testi neuspešni
