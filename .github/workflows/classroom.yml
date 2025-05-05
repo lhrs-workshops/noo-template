@@ -42,6 +42,25 @@ jobs:
         run: pytest tests.py --disable-warnings -v
         continue-on-error: true
 
+      - name: Prikaži rezultate
+        run: |
+          echo "Pregled rezultatov:"
+          if [ ! -f grade_summary.json ]; then
+            echo "Napaka: Datoteka 'grade_summary.json' ne obstaja."
+            exit 1
+          fi
+
+          total=$(jq '.max_score' grade_summary.json)
+          passed=$(jq '.total_score' grade_summary.json)
+
+          echo "✅ Skupaj testov: $total"
+          echo "🟢 Uspešno opravljenih: $passed"
+          echo "🔴 Neuspešnih: $((total - passed))"
+
+          echo ""
+          echo "📋 Neuspešni testi:"
+          jq -r '.breakdown | to_entries[] | select(.value==false) | "- " + .key' grade_summary.json || echo "✔️  Vsi testi so uspešni."
+
       - name: Nalozi rezultate (grade_summary.json)
         uses: actions/upload-artifact@v4
         with:
