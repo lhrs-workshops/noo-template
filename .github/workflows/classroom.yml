@@ -23,9 +23,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Pokaži odgovore študenta
+        run: |
+          echo "Vsebina odgovori.json:"
+          cat odgovori.json || echo "Datoteka manjka!"
+          cp odgovori.json results.json
+
       - name: Pretvori notebook v Python datoteko
         run: |
           jupyter nbconvert --to python notebook.ipynb --output=student_code.py
+          cat student_code.py
 
       - name: Prenesi skrite teste
         run: |
