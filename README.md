@@ -102,4 +102,7 @@ Vsebina grade_summary.json:
 
 
 ## Projekt definiraj kot template
-V projektu je potrebno nastaviti kot template. Settings -> General -> Template repository
+V projektu je potrebno nastaviti kot template:
+```
+Settings -> General -> Template repository
+```
