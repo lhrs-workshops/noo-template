@@ -99,3 +99,7 @@ Vsebina grade_summary.json:
  -❗ Pomembno odgovori.json mora biti ustvarjen v Jupyter zvezku pred oddajo
  - Če pytest ne najde datoteke, bo test padel
  - Če študent spremeni imena funkcij, bodo testi neuspešni
+
+
+## Projekt definiraj kot template
+V projektu je potrebno nastaviti kot template. Settings -> General -> Template repository
