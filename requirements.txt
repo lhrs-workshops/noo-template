@@ -1,0 +1,6 @@
+jupyter
+ipywidgets
+nbconvert
+ipykernel
+pytest
+atexit
