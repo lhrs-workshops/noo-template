@@ -1,0 +1,42 @@
+name: Ocenjevanje naloge
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Ocenjevanje-naloge:
+    name: Ocenjevanje naloge
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Namesti potrebne knjižnice
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Pretvori notebook v Python datoteko
+        run: |
+          jupyter nbconvert --to python notebook.ipynb --output=student_code.py
+
+      - name: Prenesi skrite teste
+        run: |
+          curl -o tests.py https://raw.githubusercontent.com/lhrs-workshops/noo-tests/refs/heads/main/test_template.py
+
+      - name: Zazeni vse teste
+        run: |
+          pytest tests.py --disable-warnings -v
+
+      - name: Nalozi rezultate (grade_summary.json)
+        uses: actions/upload-artifact@v4
+        with:
+          name: grade-summary
+          path: grade_summary.json
