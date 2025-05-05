@@ -3,4 +3,3 @@ ipywidgets
 nbconvert
 ipykernel
 pytest
-atexit
