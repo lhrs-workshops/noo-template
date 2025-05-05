@@ -32,8 +32,8 @@ jobs:
           curl -o tests.py https://raw.githubusercontent.com/lhrs-workshops/noo-tests/refs/heads/main/test_template.py
 
       - name: Zazeni vse teste
-        run: |
-          pytest tests.py --disable-warnings -v
+        run: pytest tests.py --disable-warnings -v
+        continue-on-error: true
 
       - name: Nalozi rezultate (grade_summary.json)
         uses: actions/upload-artifact@v4
