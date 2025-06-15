@@ -70,7 +70,7 @@ Ta datoteka vsebuje:
 5. Zažene celico, ki shrani tvoje odgovore v odgovori.json
 6. Izvede ukaze:
 ```
-git add .
+git add odgovori.json
 git commit -m "rešena naloga"
 git push
 ```
